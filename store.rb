@@ -22,13 +22,17 @@ require_relative 'lib/film'
 # несколько товаров.
 products = []
 
-products << Film.new(
+leon = Film.new(
   title: 'Леон', 
   year: '1994', 
   director: 'Люк Бессон', 
   price: 990, 
   amount: 5
 )
+
+leon.title=("ЛИОН")
+
+products << leon
 
 products << Film.new(
   title: 'Дурак', 
@@ -45,6 +49,8 @@ products << Book.new(
   price: 1500,
   amount: 10
 )
+
+
 
 # Выводим все продукты в консоль просто передавая их методу puts
 puts 'Вот какие товары у нас есть:'

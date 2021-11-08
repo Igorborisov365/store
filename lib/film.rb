@@ -3,7 +3,7 @@
 # Класс Фильм
 class Film < Product
 
-  attr_reader :title, :year, :director
+  attr_accessor :title, :year, :director
 
   def initialize(params)
     super

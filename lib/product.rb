@@ -5,7 +5,8 @@
 class Product
   # У любого экземпляра класса Товар будут как минимум две переменные — цена
   # и количество единиц товара на складе
-  attr_reader :price, :amount
+  attr_accessor :price, :amount
+
 
   # Конструктор товара записывает, сколько стоит товар и сколько осталось
   def initialize(params)
@@ -16,5 +17,10 @@ class Product
   # Родительский метод to_s возвращает строку с ценой и остатком
   def to_s
    "#{@price} руб. (осталось #{@amount})"
- end  
+  end  
+
+   def update=(a)
+
+   end
+
 end
