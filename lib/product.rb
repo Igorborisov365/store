@@ -12,4 +12,9 @@ class Product
     @price = params[:price]
     @amount = params[:amount]
   end
+
+  # Родительский метод to_s возвращает строку с ценой и остатком
+  def to_s
+   "#{@price} руб. (осталось #{@amount})"
+ end  
 end

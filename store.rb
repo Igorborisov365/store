@@ -14,14 +14,40 @@ if Gem.win_platform?
   end
 end
 
-# Подключаем классы товара и классов-детей: книги и фильма
 require_relative 'lib/product'
 require_relative 'lib/book'
 require_relative 'lib/film'
 
-# Пока функционал у нас очень простой, но фильм мы создать уже можем. Создадим
-# новый товар — фильм за 990 рублей, и скажем, на складе их осталось 5 штук.
-leon = Film.new(price: 990, amount: 5)
+# Воспользуемся крутыми конструкторами для классов Film и Book и создадим
+# несколько товаров.
+products = []
 
-# Просто чтобы не скучать выведем это в консоль
-puts "Фильм Леон стоит #{leon.price} руб."
+products << Film.new(
+  title: 'Леон', 
+  year: '1994', 
+  director: 'Люк Бессон', 
+  price: 990, 
+  amount: 5
+)
+
+products << Film.new(
+  title: 'Дурак', 
+  year: '2014', 
+  director: 'Юрий Быков', 
+  price: 390, 
+  amount: 1
+)
+
+products << Book.new(
+  title: 'Идиот',
+  genre: 'роман',
+  author: 'Федор Достоевский',
+  price: 1500,
+  amount: 10
+)
+
+# Выводим все продукты в консоль просто передавая их методу puts
+puts 'Вот какие товары у нас есть:'
+puts
+products.each { |product| p product.to_s }
+
