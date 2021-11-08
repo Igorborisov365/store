@@ -1,8 +1,9 @@
 # encoding: utf-8
 #
-# Программа-магазин книг и фильмов. Версия 0.1 — заготовка.
+# Программа-магазин книг и фильмов. Версия 0.4 — с методом класса from_file для
+# каждого класса-ребенка (для родителя метод вызывает ошибку)
 #
-# (с) rubyrush.ru
+# (с) goodprogrammer.ru
 #
 # Этот код необходим только при использовании русских букв на Windows
 if Gem.win_platform?
@@ -18,42 +19,18 @@ require_relative 'lib/product'
 require_relative 'lib/book'
 require_relative 'lib/film'
 
-# Воспользуемся крутыми конструкторами для классов Film и Book и создадим
-# несколько товаров.
-products = []
+# Считываем наши книгу и фильм из папок data/books и data/films соответственно
+current_path = File.dirname(__FILE__)
+film = Film.from_file(current_path + '/data/films/01.txt')
+#book = Film.from_file(current_path + '/data/books/01.txt')
 
-leon = Film.new(
-  title: 'Леон', 
-  year: '1994', 
-  director: 'Люк Бессон', 
-  price: 990, 
-  amount: 5
-)
-
-leon.title=("ЛИОН")
-
-products << leon
-
-products << Film.new(
-  title: 'Дурак', 
-  year: '2014', 
-  director: 'Юрий Быков', 
-  price: 390, 
-  amount: 1
-)
-
-products << Book.new(
-  title: 'Идиот',
-  genre: 'роман',
-  author: 'Федор Достоевский',
-  price: 1500,
-  amount: 10
-)
+# Выводим их на экран
+puts film
 
 
-
-# Выводим все продукты в консоль просто передавая их методу puts
-puts 'Вот какие товары у нас есть:'
-puts
-products.each { |product| p product.to_s }
-
+# Пытаемся вызвать метод from_file у класса Product и ловим ошибку
+begin
+  Product.from_file(current_path + '/data/films/01.txt')
+rescue NotImplementedError
+  puts 'Метод класса Product.from_file не реализован'
+end
